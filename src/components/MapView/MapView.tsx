@@ -44,6 +44,7 @@ export function MapView(props: Props) {
   const doorEls = useRef(new Map<string, HTMLElement>());
   const [ready, setReady] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [attempt, setAttempt] = useState(0);
 
   // Метки создаются один раз при загрузке карты; обработчик берётся всегда свежий.
   const initRef = useRef(props);
@@ -63,6 +64,7 @@ export function MapView(props: Props) {
     load()
       .then((api) => {
         if (cancelled) return;
+        if (!api.isSupported()) throw new UnsupportedError(api.notSupportedReason() ?? '');
         const { view, buildings, doors, gates } = initRef.current;
         map = new api.Map(container, { ...view, key: apiKey, zoomControl: false });
         apiRef.current = api;
@@ -89,7 +91,11 @@ export function MapView(props: Props) {
         }
         setReady(true);
       })
-      .catch(() => !cancelled && setError(ru.mapLoadError));
+      .catch((e: unknown) => {
+        if (cancelled) return;
+        console.error('2GIS MapGL:', e);
+        setError(describeMapError(e));
+      });
 
     return () => {
       cancelled = true;
@@ -100,7 +106,7 @@ export function MapView(props: Props) {
       doorMap.clear();
       setReady(false);
     };
-  }, [apiKey]);
+  }, [apiKey, attempt]);
 
   // Линия маршрута и подгонка масштаба под неё.
   useEffect(() => {
@@ -166,8 +172,20 @@ export function MapView(props: Props) {
     return (
       <div className={styles.fallback} role="status">
         <div className={styles.fallbackCard}>
-          <strong>{ru.noKeyTitle}</strong>
+          <strong>{error ? ru.mapErrorTitle : ru.noKeyTitle}</strong>
           <p>{error ?? ru.noKeyText}</p>
+          {error && (
+            <button
+              type="button"
+              className={styles.retry}
+              onClick={() => {
+                setError(null);
+                setAttempt((n) => n + 1);
+              }}
+            >
+              {ru.mapRetry}
+            </button>
+          )}
         </div>
       </div>
     );
@@ -192,4 +210,14 @@ export function MapView(props: Props) {
       )}
     </div>
   );
+}
+
+class UnsupportedError extends Error {}
+
+/** Понятная причина, почему карта не открылась. */
+function describeMapError(e: unknown): string {
+  if (e instanceof UnsupportedError) return ru.mapUnsupported(e.message);
+  // Ошибка загрузки <script> приходит как Event, а не Error.
+  if (e instanceof Error) return ru.mapCreateError(e.message);
+  return ru.mapScriptError;
 }

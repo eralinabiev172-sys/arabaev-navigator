@@ -133,3 +133,8 @@
   color: var(--ink);
   border: 1px solid var(--line);
 }
+
+.retry {
+  composes: primary from '../ui.module.css';
+  margin-top: 12px;
+}

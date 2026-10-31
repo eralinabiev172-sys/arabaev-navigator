@@ -62,7 +62,13 @@ export const ru = {
   noKeyTitle: 'Карта не подключена',
   noKeyText:
     'Нет ключа 2ГИС. Добавь VITE_DGIS_KEY в файл .env и перезапусти сайт. Поиск и план этажа работают и без карты.',
-  mapLoadError: 'Не удалось загрузить карту 2ГИС. Проверь интернет.',
+  mapErrorTitle: 'Карта не загрузилась',
+  mapScriptError:
+    'Не удалось скачать карту с сервера 2ГИС (mapgl.2gis.com). Проверь интернет, выключи блокировщик рекламы и «экономию трафика» в браузере.',
+  mapUnsupported: (reason: string) =>
+    `Этот браузер не умеет показывать карту 2ГИС${reason ? `: ${reason}` : ''}. Попробуй Chrome или Safari.`,
+  mapCreateError: (msg: string) => `Карта 2ГИС выдала ошибку: ${msg}`,
+  mapRetry: 'Попробовать снова',
 };
 
 export function stepText(step: FloorStep): string {
