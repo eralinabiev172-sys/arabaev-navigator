@@ -1,0 +1,91 @@
+.app {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.top {
+  position: absolute;
+  z-index: 11;
+  top: calc(12px + env(safe-area-inset-top, 0px));
+  left: calc(12px + env(safe-area-inset-left, 0px));
+  right: 72px;
+  pointer-events: none;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  min-height: var(--tap);
+  padding: 8px 14px 8px 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card-sm);
+  font-weight: 700;
+  color: var(--primary);
+  pointer-events: auto;
+}
+
+.logo {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at 50% 42%, var(--gold) 0 4px, transparent 4.5px), var(--primary);
+}
+
+.note {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.far {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border-radius: var(--radius-card-sm);
+  border: 1px solid var(--gold);
+  background: color-mix(in srgb, var(--gold) 12%, var(--surface));
+}
+
+.far p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.farHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.farClose {
+  composes: btn from './components/ui.module.css';
+  padding: 0;
+  font-size: 22px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.farLink {
+  composes: primary from './components/ui.module.css';
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+}
+
+.next {
+  composes: primary from './components/ui.module.css';
+}
+
+@media (min-width: 900px) {
+  .top {
+    right: auto;
+    width: calc(var(--panel-width) - 24px);
+  }
+}

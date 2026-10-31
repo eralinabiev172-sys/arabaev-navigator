@@ -1,0 +1,176 @@
+.wrap {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+}
+
+.outline {
+  fill: var(--plan-floor);
+  stroke: var(--plan-wall);
+  stroke-width: 4;
+  stroke-linejoin: miter;
+}
+
+.room {
+  fill: var(--plan-room);
+  stroke: var(--plan-wall);
+  stroke-width: 2;
+}
+
+.numbered {
+  fill: var(--plan-room-num);
+}
+
+.selected {
+  fill: var(--primary);
+}
+
+.picked {
+  fill: var(--plan-pick);
+}
+
+.inner {
+  fill: none;
+  stroke: var(--plan-room-line);
+  stroke-width: 0.8;
+  stroke-dasharray: 2 2;
+  pointer-events: none;
+}
+
+.roomGroup {
+  cursor: pointer;
+  outline: none;
+}
+
+.roomGroup:focus-visible .room {
+  stroke: var(--focus);
+  stroke-width: 3;
+}
+
+.num {
+  font: 600 10px var(--font);
+  fill: var(--plan-num);
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+.numOn {
+  fill: var(--on-primary);
+}
+
+.picked + .inner + .num {
+  fill: #22356b;
+}
+
+.gap {
+  stroke: var(--plan-floor);
+  stroke-width: 3.5;
+  pointer-events: none;
+}
+
+.entranceGap {
+  stroke: var(--plan-floor);
+  stroke-width: 5;
+}
+
+.stair {
+  fill: var(--plan-room);
+  stroke: var(--plan-wall);
+  stroke-width: 1.5;
+}
+
+.step {
+  stroke: var(--muted);
+  stroke-width: 0.7;
+}
+
+.compass {
+  fill: var(--ink-soft);
+}
+
+.compassText {
+  font: 700 10px var(--font);
+  fill: var(--ink-soft);
+  text-anchor: middle;
+}
+
+.entrance {
+  fill: var(--door);
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.entranceN {
+  font: 700 9px var(--font);
+  fill: #fff;
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+.entranceLabel {
+  font: 700 9px var(--font);
+  fill: var(--door);
+  text-anchor: middle;
+  dominant-baseline: central;
+  paint-order: stroke;
+  stroke: var(--plan-floor);
+  stroke-width: 3px;
+}
+
+.routeUnder,
+.route {
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.routeUnder {
+  stroke: #fff;
+  stroke-width: 9;
+}
+
+.route {
+  stroke: var(--route);
+  stroke-width: 5;
+}
+
+.routeEnd {
+  fill: var(--route);
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+/* Внизу справа: на телефоне план вписан по ширине и снизу остаётся свободное поле. */
+.zoom {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 6px;
+}
+
+.zoomBtn {
+  composes: btn from '../ui.module.css';
+  width: var(--tap);
+  padding: 0;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  background: var(--surface);
+}

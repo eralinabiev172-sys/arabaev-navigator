@@ -1,0 +1,75 @@
+.sheet {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: calc(100dvh - 76px - env(safe-area-inset-top, 0px));
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.dragging {
+  transition: none;
+}
+
+.handle {
+  flex: none;
+  height: 28px;
+  width: 100%;
+  border: 0;
+  background: none;
+  display: grid;
+  place-items: center;
+  cursor: grab;
+  touch-action: none;
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+}
+
+.handle:focus-visible {
+  outline-offset: -3px;
+}
+
+.grip {
+  width: 44px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--line);
+}
+
+.scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 16px calc(16px + env(safe-area-inset-bottom, 0px));
+}
+
+.body {
+  display: grid;
+  gap: 14px;
+  padding-top: 14px;
+}
+
+@media (min-width: 900px) {
+  .sheet {
+    top: 0;
+    right: auto;
+    width: var(--panel-width);
+    max-height: none;
+    border: 0;
+    border-right: 1px solid var(--line);
+    border-radius: 0;
+    transition: none;
+  }
+
+  .scroll {
+    padding-top: 84px;
+  }
+}

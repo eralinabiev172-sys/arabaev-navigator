@@ -1,0 +1,14 @@
+.label {
+  composes: label from '../ui.module.css';
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 6px;
+}
+
+.btn {
+  composes: btn from '../ui.module.css';
+  padding-inline: 8px;
+}

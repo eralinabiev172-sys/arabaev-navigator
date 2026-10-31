@@ -1,0 +1,53 @@
+/* Общие стили кнопок. Подключаются через composes в модулях компонентов. */
+.btn {
+  min-height: var(--tap);
+  min-width: var(--tap);
+  padding: 10px 14px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s;
+}
+
+.btn:hover {
+  border-color: var(--primary);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.primary {
+  composes: btn;
+  width: 100%;
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--on-primary);
+  font-size: 15px;
+}
+
+.segment {
+  display: grid;
+  gap: 6px;
+}
+
+.segment > button[aria-pressed='true'] {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.label {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}

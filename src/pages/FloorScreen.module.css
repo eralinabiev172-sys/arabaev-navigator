@@ -1,0 +1,92 @@
+.screen {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) calc(12px + env(safe-area-inset-right, 0px))
+    calc(12px + env(safe-area-inset-bottom, 0px)) calc(12px + env(safe-area-inset-left, 0px));
+  background: var(--bg);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.back {
+  composes: btn from '../components/ui.module.css';
+  background: var(--surface);
+}
+
+.plan {
+  min-height: 0;
+}
+
+.side {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  min-height: 0;
+}
+
+.info {
+  max-height: 34dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card-sm);
+}
+
+.info p {
+  margin: 0;
+}
+
+.roomName {
+  overflow-wrap: anywhere;
+}
+
+.muted {
+  color: var(--ink-soft);
+}
+
+.note {
+  margin-top: 6px !important;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--gold) 18%, transparent);
+  font-size: 14px;
+}
+
+.go {
+  composes: primary from '../components/ui.module.css';
+  margin-top: 10px;
+}
+
+@media (min-width: 900px) {
+  .screen {
+    grid-template-columns: minmax(0, 1fr) var(--panel-width);
+    grid-template-rows: auto minmax(0, 1fr);
+    column-gap: 12px;
+  }
+
+  .header {
+    grid-column: 1 / -1;
+  }
+
+  .info {
+    max-height: none;
+  }
+}

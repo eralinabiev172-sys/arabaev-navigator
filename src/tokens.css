@@ -1,0 +1,118 @@
+/* Дизайн-токены: цвета университета (тёмно-синий и золотой), светлая и тёмная тема. */
+:root {
+  --primary: #1f3a8a;
+  --on-primary: #ffffff;
+  --route: #3f51b5;
+  --gold: #e0a526;
+  --on-gold: #2a1e00;
+  --door: #e4572e;
+  --muted: #7b858b;
+  --bg: #f2f4f3;
+  --surface: #ffffff;
+
+  --ink: #1e2a30;
+  --ink-soft: #4f5b61; /* вторичный текст, контраст ≥ 4.5:1 на bg и surface */
+  --line: #cdd5d1;
+  --focus: #e0a526;
+
+  /* План этажа */
+  --plan-floor: #f4f6f8;
+  --plan-wall: #22303a;
+  --plan-room: #ffffff;
+  --plan-room-num: #e4ecfa;
+  --plan-room-line: #8fa3cf;
+  --plan-num: #22356b;
+  --plan-pick: #ffd54f;
+
+  --radius-card: 16px;
+  --radius-card-sm: 12px;
+  --radius-btn: 10px;
+  --tap: 44px;
+  --panel-width: 380px;
+
+  --font: 'Onest', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #8ea2f0;
+    --on-primary: #10183a;
+    --route: #7c8cf0;
+    --gold: #e9b949;
+    --on-gold: #2a1e00;
+    --door: #f07050;
+    --muted: #8a949a;
+    --bg: #151b1e;
+    --surface: #20282c;
+
+    --ink: #e6ecea;
+    --ink-soft: #a9b5b9;
+    --line: #33403f;
+    --focus: #e9b949;
+
+    --plan-floor: #1a2125;
+    --plan-wall: #c9d3d8;
+    --plan-room: #232c31;
+    --plan-room-num: #27324a;
+    --plan-room-line: #5a6fa0;
+    --plan-num: #c9d6f5;
+    --plan-pick: #ffd54f;
+    color-scheme: dark;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  overscroll-behavior: none;
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.45;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

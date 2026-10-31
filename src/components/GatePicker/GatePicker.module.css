@@ -1,0 +1,24 @@
+.label {
+  composes: label from '../ui.module.css';
+}
+
+.row {
+  composes: segment from '../ui.module.css';
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.btn {
+  composes: btn from '../ui.module.css';
+  padding-inline: 4px;
+}
+
+.locate {
+  composes: btn from '../ui.module.css';
+  width: 100%;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--primary);
+}

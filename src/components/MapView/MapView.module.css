@@ -1,0 +1,135 @@
+.wrap,
+.map,
+.fallback {
+  position: absolute;
+  inset: 0;
+}
+
+.fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px 40vh;
+  background: var(--bg);
+}
+
+.fallbackCard {
+  max-width: 360px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 16px;
+}
+
+.fallbackCard p {
+  margin: 6px 0 0;
+  color: var(--ink-soft);
+}
+
+.north {
+  position: absolute;
+  z-index: 5;
+  width: var(--tap);
+  height: var(--tap);
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--primary);
+  cursor: pointer;
+}
+
+/* Метки зданий. Привязка к точке — нижний центр подписи. */
+.pin {
+  position: relative;
+  transform: translate(-50%, -100%);
+  white-space: nowrap;
+  font: 600 13px/1 var(--font);
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgb(255 255 255 / 0.8);
+  color: #fff;
+  background: #1f3a8a;
+  cursor: pointer;
+}
+
+.korpus {
+  background: #1f3a8a;
+}
+
+.library {
+  background: #17766a;
+}
+
+.food {
+  background: #8a6a12;
+}
+
+.foreign {
+  background: #6b757b;
+  cursor: help;
+}
+
+.door {
+  position: relative;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--door);
+  border: 2px solid #fff;
+  transition: transform 0.2s;
+}
+
+.doorInactive {
+  background: var(--muted);
+  cursor: help;
+}
+
+.door.active {
+  transform: translate(-50%, -50%) scale(1.6);
+  box-shadow: 0 0 0 4px rgb(228 87 46 / 0.35);
+}
+
+.gate {
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font: 700 12px/1 var(--font);
+  padding: 6px 9px;
+  border-radius: 8px;
+  background: var(--gold);
+  color: var(--on-gold);
+  border: 2px solid #fff;
+}
+
+.gate.active {
+  outline: 3px solid var(--route);
+}
+
+.me {
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #1e88e5;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 7px rgb(30 136 229 / 0.25);
+}
+
+.hint {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 220px;
+  white-space: normal;
+  text-align: center;
+  font: 500 13px/1.35 var(--font);
+  padding: 8px 10px;
+  border-radius: var(--radius-btn);
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
